@@ -70,12 +70,10 @@
                 success:function(data){
                     if( data.status == 'success' ){
                         window.location = '{{ route('success', 0) }}'.replace('/0', '/'+data.order_id);
-                    }else{
-                        alert('Error: You probably forget to set mailtrap settings. If you dont have mailtrap, please use another currency for purchase instead GBP.');
                     }
                 },
                 error: function (data) {
-                    alert('Error: You probably forget to set mailtrap settings. If you dont have mailtrap, please use another currency for purchase instead GBP.');
+                    window.location = '{{ route('create') }}';
                 }
             });
         });

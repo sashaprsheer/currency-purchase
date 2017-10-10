@@ -18,6 +18,6 @@ Route::get('success/{order}', function(App\Order $order) {
 })->name('success');
 
 
-Route::post('/create', 'IndexController@create');
+Route::post('/create', 'IndexController@create')->name('create');
 
 
