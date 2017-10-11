@@ -12,7 +12,7 @@ class TotalsCalculator
      */
     public function makeTotalsCalculations($data) {
         $amountUsd = $data['amount_usd'];
-        $surchangePercentage = $data['surchange_percentage'];
+        $surchangePercentage = str_replace('%', '', $data['surchange_percentage']);
         $currencyPurchased = strtolower($data['currency_purshased']);
         $exchangeRatesApi = new ExchangeRatesApi();
         $exchangeRates = $exchangeRatesApi->getExchangeRates();
@@ -21,6 +21,7 @@ class TotalsCalculator
         $surchange = $total * ($surchangePercentage / 100);
         $grandTotal = $total + $surchange;
         $discount = 0;
+
 
         // Apply 2% discount for euro.
         if ($currencyPurchased == "eur") {
